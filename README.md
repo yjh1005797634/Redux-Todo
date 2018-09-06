@@ -9,29 +9,29 @@
    1.经典之处  不再以render渲染方法 作为 监听者
      不再以render方法作为监听者  而是用 setState 数据的改变作为监听者
 
-   // let render = ()=>{
-   //     ReactDOM.render(<Counter/>,document.querySelector('#root'));
-   // }
-   //
-   // render();
-   //
-   // //订阅
-   // store.subscribe(render);
-   //
-   //
-   // //取消订阅
-   // let unsubscribe = store.subscribe(render);
-   //
-   // // console.log(unsubscribe);
-   //
-   // setTimeout(function (){
-   //
-   //     alert('zhixg')
-   //     unsubscribe();
-   // },2000);
+       let render = ()=>{
+           ReactDOM.render(<Counter/>,document.querySelector('#root'));
+       }
+
+       render();
+
+       //订阅
+       store.subscribe(render);
 
 
-   2.而是将state 作为监听者
+       //取消订阅
+       let unsubscribe = store.subscribe(render);
+
+       // console.log(unsubscribe);
+
+       setTimeout(function (){
+
+           alert('zhixg')
+           unsubscribe();
+       },2000);
+
+
+   2.而是将state 作为监听
 
 
        constructor(){
@@ -52,12 +52,12 @@
 
 
  二、整个redux程序思路
-    1.导入 'react'   解构出{createStore}方法
-    2.创建reducer处理器  现有reducer处理器 才有仓库 处理器有两个参数 (state action)
-    3.将reducer 传入 createStore方法 返回一个store 仓库
-    4.在将要挂载组件的时候 订阅 让数据变更成为监听者
-    5.在卸载的时候 取消订阅
-    6.触发 view 点击事件 onkeydown事件的时候 根据逻辑 发送 dispatch方法
+     1.导入 'react'   解构出{createStore}方法
+     2.创建reducer处理器  现有reducer处理器 才有仓库 处理器有两个参数 (state action)
+     3.将reducer 传入 createStore方法 返回一个store 仓库
+     4.在将要挂载组件的时候 订阅 让数据变更成为监听者
+     5.在卸载的时候 取消订阅
+     6.触发 view 点击事件 onkeydown事件的时候 根据逻辑 发送 dispatch方法
 
 三、程序运行思路
    1.创建reducer 处理业务逻辑
